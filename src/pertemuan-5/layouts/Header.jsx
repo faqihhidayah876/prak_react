@@ -21,8 +21,8 @@ export default function Header() {
         <div className="flex space-x-4">
             <div id="notification-icon" className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer">
             <FaBell />
-            <span id="notification-badge" className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2
-             bg-blue-500 text-white rounded-full px-2 py-0.5 text-xs">50</span>
+            <span id="notification-badge" className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 
+            bg-red-500 text-white rounded-full px-2 py-0.5 text-xs animate-pulse ring-2 ring-white">50</span>
             </div>
             <div id="chart-icon" className="p-3 bg-blue-100 rounded-2xl cursor-pointer">
             <FcAreaChart />
