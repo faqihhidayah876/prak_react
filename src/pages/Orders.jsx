@@ -4,7 +4,7 @@ import PageHeader from "../components/PageHeader";
 export default function Orders() {
   return (
     <div id="dashboard-container" className="flex flex-col">
-      <PageHeader />
+      <PageHeader title="Orders"/>
       <p>Ini halaman Orders</p>
     </div>
   );

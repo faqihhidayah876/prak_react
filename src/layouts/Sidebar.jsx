@@ -1,7 +1,13 @@
 import { FaHome, FaBox, FaUsers, FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 export default function Sidebar() {
+      const menuClass = ({ isActive }) =>
+        `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+        ${isActive ? 
+            "text-hijau bg-green-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`
   return (
     <div id="sidebar" className="flex flex-col min-h-screen w-80 bg-white p-8 shadow-lg">
       {/* Logo */}
@@ -18,19 +24,19 @@ export default function Sidebar() {
       <div id="sidebar-menu" className="mt-10 flex-1">
         <ul id="menu-list" className="space-y-3">
           <li>
-            <Link id="menu-1" className="flex items-center cursor-pointer rounded-xl p-4 font-medium text-hijau bg-green-100">
+            <NavLink id="menu-1" to="/" className={menuClass}>
               <FaHome className="mr-4 text-xl" /> Dashboard
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <div id="menu-2" className="flex items-center cursor-pointer rounded-xl p-4 font-medium text-gray-600 hover:text-hijau hover:bg-green-100 transition-colors">
+            <NavLink id="menu-2" to="/orders" className={menuClass}>
               <FaBox className="mr-4 text-xl" /> Order List
-            </div>
+            </NavLink>
           </li>
           <li>
-            <div id="menu-3" className="flex items-center cursor-pointer rounded-xl p-4 font-medium text-gray-600 hover:text-hijau hover:bg-green-100 transition-colors">
+            <NavLink id="menu-3" to="/customers" className={menuClass}>
               <FaUsers className="mr-4 text-xl" /> Customer
-            </div>
+            </NavLink>
           </li>
         </ul>
       </div>

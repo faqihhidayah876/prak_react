@@ -1,9 +1,9 @@
-export default function PageHeader() {
+export default function PageHeader(props) {
   return (
     <div id="pageheader-container" className="flex items-center justify-between p-4 mb-4">
       <div id="pageheader-left" className="flex flex-col">
         <span id="page-title" className="text-3xl font-bold text-gray-800">
-          Dashboard
+          {props.title}
         </span>
         <div id="breadcrumb-links" className="flex items-center font-medium space-x-2 mt-2 text-sm">
           <span id="breadcrumb-home" className="text-gray-400">Dashboard</span>

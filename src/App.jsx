@@ -6,8 +6,8 @@ import Sidebar from "./layouts/Sidebar";
 import Header from "./layouts/Header";
 import Dashboard from "./pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
-import Orders from "./pages/Customers";
 import Customers from "./pages/Customers";
+import Orders from "./pages/Orders";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,13 +18,17 @@ function App() {
         <Sidebar />
         <div
           id="main-content"
-          className="flex-1 flex flex-col p-4 overflow-y-auto">
+          className="flex-1 flex flex-col p-4 overflow-y-auto"
+        >
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/customers" element={<Customers />} />
           </Routes>
+          {/* <Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes> */}
         </div>
       </div>
     </div>
