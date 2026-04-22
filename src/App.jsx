@@ -8,7 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import Customers from "./pages/Customers";
 import Orders from "./pages/Orders";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/ErrorPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,7 +26,10 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/customers" element={<Customers />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound errorCode="404" errorDescription="Sorry, we were unable to find that page" errorImage="/image_9dca28.jpg" />} />
+            <Route path="/error-400" element={<NotFound errorCode="400" errorDescription="Bad Request. Server cannot process the request." />} />
+            <Route path="/error-401" element={<NotFound errorCode="401" errorDescription="Unauthorized. You lack valid authentication credentials." />} />
+            <Route path="/error-403" element={<NotFound errorCode="403" errorDescription="Forbidden. You don't have permission to access this resource." />} />
           </Routes>
         </div>
       </div>

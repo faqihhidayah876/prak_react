@@ -1,4 +1,4 @@
-import { FaHome, FaBox, FaUsers, FaPlus } from "react-icons/fa";
+import { FaHome, FaBox, FaUsers, FaPlus, FaBan } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom"
 
 export default function Sidebar() {
@@ -36,6 +36,21 @@ export default function Sidebar() {
           <li>
             <NavLink id="menu-3" to="/customers" className={menuClass}>
               <FaUsers className="mr-4 text-xl" /> Customer
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/error-400" className={menuClass}>
+              <FaBan className="mr-4 text-xl" /> Error 400
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/error-401" className={menuClass}>
+              <FaBan className="mr-4 text-xl" /> Error 401
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/error-403" className={menuClass}>
+              <FaBan className="mr-4 text-xl" /> Error 403
             </NavLink>
           </li>
         </ul>

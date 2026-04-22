@@ -1,0 +1,212 @@
+[
+  {
+    "customerId": "CUST-2000",
+    "customerName": "Customer Name 1",
+    "email": "customer1@example.com",
+    "phone": "+62 812-3456-7000",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2001",
+    "customerName": "Customer Name 2",
+    "email": "customer2@example.com",
+    "phone": "+62 812-3456-7001",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2002",
+    "customerName": "Customer Name 3",
+    "email": "customer3@example.com",
+    "phone": "+62 812-3456-7002",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2003",
+    "customerName": "Customer Name 4",
+    "email": "customer4@example.com",
+    "phone": "+62 812-3456-7003",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2004",
+    "customerName": "Customer Name 5",
+    "email": "customer5@example.com",
+    "phone": "+62 812-3456-7004",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2005",
+    "customerName": "Customer Name 6",
+    "email": "customer6@example.com",
+    "phone": "+62 812-3456-7005",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2006",
+    "customerName": "Customer Name 7",
+    "email": "customer7@example.com",
+    "phone": "+62 812-3456-7006",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2007",
+    "customerName": "Customer Name 8",
+    "email": "customer8@example.com",
+    "phone": "+62 812-3456-7007",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2008",
+    "customerName": "Customer Name 9",
+    "email": "customer9@example.com",
+    "phone": "+62 812-3456-7008",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2009",
+    "customerName": "Customer Name 10",
+    "email": "customer10@example.com",
+    "phone": "+62 812-3456-7009",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2010",
+    "customerName": "Customer Name 11",
+    "email": "customer11@example.com",
+    "phone": "+62 812-3456-7010",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2011",
+    "customerName": "Customer Name 12",
+    "email": "customer12@example.com",
+    "phone": "+62 812-3456-7011",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2012",
+    "customerName": "Customer Name 13",
+    "email": "customer13@example.com",
+    "phone": "+62 812-3456-7012",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2013",
+    "customerName": "Customer Name 14",
+    "email": "customer14@example.com",
+    "phone": "+62 812-3456-7013",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2014",
+    "customerName": "Customer Name 15",
+    "email": "customer15@example.com",
+    "phone": "+62 812-3456-7014",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2015",
+    "customerName": "Customer Name 16",
+    "email": "customer16@example.com",
+    "phone": "+62 812-3456-7015",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2016",
+    "customerName": "Customer Name 17",
+    "email": "customer17@example.com",
+    "phone": "+62 812-3456-7016",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2017",
+    "customerName": "Customer Name 18",
+    "email": "customer18@example.com",
+    "phone": "+62 812-3456-7017",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2018",
+    "customerName": "Customer Name 19",
+    "email": "customer19@example.com",
+    "phone": "+62 812-3456-7018",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2019",
+    "customerName": "Customer Name 20",
+    "email": "customer20@example.com",
+    "phone": "+62 812-3456-7019",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2020",
+    "customerName": "Customer Name 21",
+    "email": "customer21@example.com",
+    "phone": "+62 812-3456-7020",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2021",
+    "customerName": "Customer Name 22",
+    "email": "customer22@example.com",
+    "phone": "+62 812-3456-7021",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2022",
+    "customerName": "Customer Name 23",
+    "email": "customer23@example.com",
+    "phone": "+62 812-3456-7022",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2023",
+    "customerName": "Customer Name 24",
+    "email": "customer24@example.com",
+    "phone": "+62 812-3456-7023",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2024",
+    "customerName": "Customer Name 25",
+    "email": "customer25@example.com",
+    "phone": "+62 812-3456-7024",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2025",
+    "customerName": "Customer Name 26",
+    "email": "customer26@example.com",
+    "phone": "+62 812-3456-7025",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2026",
+    "customerName": "Customer Name 27",
+    "email": "customer27@example.com",
+    "phone": "+62 812-3456-7026",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-2027",
+    "customerName": "Customer Name 28",
+    "email": "customer28@example.com",
+    "phone": "+62 812-3456-7027",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-2028",
+    "customerName": "Customer Name 29",
+    "email": "customer29@example.com",
+    "phone": "+62 812-3456-7028",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-2029",
+    "customerName": "Customer Name 30",
+    "email": "customer30@example.com",
+    "phone": "+62 812-3456-7029",
+    "loyalty": "Gold"
+  }
+]
