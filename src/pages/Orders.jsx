@@ -1,22 +1,42 @@
 import { FaShoppingCart, FaTruck, FaBan, FaDollarSign, FaPlus } from "react-icons/fa";
 import PageHeader from "../components/PageHeader";
 import ordersData from "../data/OrderData.json";
+import { useState } from "react"; 
+import { FaTimes } from "react-icons/fa";
 
 export default function Orders() {
-  const ordersData = Array.from({ length: 30 }, (_, i) => ({
-    orderId: `ORD-${1000 + i}`,
-    customerName: `Customer Name ${i + 1}`,
-    status: ["Pending", "Completed", "Cancelled"][i % 3], // Rotasi status
-    totalPrice: `Rp ${(Math.random() * 500000 + 50000).toFixed(0)}`,
-    orderDate: `2026-04-${(i % 30 + 1).toString().padStart(2, "0")}`,
-  }));
+  const [orders, setOrders] = useState(ordersData);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    orderId: "",
+    customerName: "",
+    status: "Pending",
+    totalPrice: "",
+    orderDate: ""
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setOrders([formData, ...orders]);
+    setIsModalOpen(false);
+    setFormData({ orderId: "", customerName: "", status: "Pending", totalPrice: "", orderDate: "" });
+  };
   return (
     <div className="flex flex-col">
       <PageHeader 
         title="Orders" 
         breadcrumb={["Dashboard", "Order List"]}
       >
-        <button className="bg-hijau hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 font-medium shadow-sm transition-colors">
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="bg-hijau hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 font-medium shadow-sm transition-colors"
+        >
           <FaPlus /> <span>Add Orders</span>
         </button>
       </PageHeader>
@@ -52,6 +72,51 @@ export default function Orders() {
           </tbody>
         </table>
       </div>
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-900/50 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl w-full max-w-md p-6 relative shadow-2xl">
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500"
+            >
+              <FaTimes size={20} />
+            </button>
+            
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Add New Order</h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Order ID</label>
+                <input type="text" name="orderId" value={formData.orderId} onChange={handleInputChange} required className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-hijau focus:ring-1 focus:ring-hijau" placeholder="ORD-9999" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
+                <input type="text" name="customerName" value={formData.customerName} onChange={handleInputChange} required className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-hijau focus:ring-1 focus:ring-hijau" placeholder="John Doe" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Total Price</label>
+                <input type="text" name="totalPrice" value={formData.totalPrice} onChange={handleInputChange} required className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-hijau focus:ring-1 focus:ring-hijau" placeholder="Rp 500000" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Order Date</label>
+                <input type="date" name="orderDate" value={formData.orderDate} onChange={handleInputChange} required className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-hijau focus:ring-1 focus:ring-hijau" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <select name="status" value={formData.status} onChange={handleInputChange} className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-hijau focus:ring-1 focus:ring-hijau">
+                  <option value="Pending">Pending</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div className="pt-4 flex justify-end">
+                <button type="button" onClick={() => setIsModalOpen(false)} className="mr-3 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Cancel</button>
+                <button type="submit" className="px-4 py-2 bg-hijau text-white rounded-lg hover:bg-green-600 font-medium shadow-sm">Save Order</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
