@@ -5,6 +5,7 @@ import viteLogo from "/vite.svg";
 import "./assets/tailwind.css";
 import Loading from "./components/Loading";
 import NotFound from "./pages/ErrorPage";
+import FiturXyz from "./pages/fiturXyz";
 
 // Lazy loading untuk Pages dan Layouts
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -36,6 +37,8 @@ function App() {
           <Route path="/products" element={<Produk />} />
           <Route path="/products/:id" element={<ProductDetail />} /> 
           <Route path="/components" element={<ComponentsPage />} />
+          <Route path="/FiturXyz" element={<FiturXyz/>} />
+          
           <Route path="*" element={<NotFound errorCode="404" errorDescription="Sorry, we were unable to find that page" errorImage="/image_9dca28.jpg" />} />
           <Route path="/error-400" element={<NotFound errorCode="400" errorDescription="Bad Request. Server cannot process the request." />} />
           <Route path="/error-401" element={<NotFound errorCode="401" errorDescription="Unauthorized. You lack valid authentication credentials." />} />
