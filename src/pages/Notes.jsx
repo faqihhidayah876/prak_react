@@ -6,6 +6,10 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import EmptyState from "../components/EmptyState";
 import { AiFillDelete } from "react-icons/ai";
 
+// Import komponen ShadCN UI
+import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+
 export default function Notes() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -16,12 +20,10 @@ export default function Notes() {
         title: "", content: "", status: ""
     });
 
-    // Load data saat pertama di-render
     useEffect(() => {
         loadNotes();
     }, []);
 
-    // Memanggil fetchNotes beserta error/loading handling
     const loadNotes = async () => {
         try {
             setLoading(true);
@@ -88,104 +90,113 @@ export default function Notes() {
     return (
         <div className="max-w-4xl mx-auto p-6">
             <div className="mb-6">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                <h2 className="text-3xl font-bold text-gray-800 mb-2 tracking-tight">
                     Notes App
                 </h2>
+                <p className="text-gray-500">Kelola catatan harianmu dengan mudah.</p>
             </div>
 
             {error && <AlertBox type="error">{error}</AlertBox>}
             {success && <AlertBox type="success">{success}</AlertBox>}
 
-            {/* Form Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                    Tambah Catatan Baru
-                </h3>
+            {/* FORM CARD MENGGUNAKAN SHADCN UI */}
+            <Card className="mb-8 border-slate-200 shadow-sm">
+                <CardHeader>
+                    <CardTitle className="text-xl">Tambah Catatan Baru</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <input
+                            type="text"
+                            name="title"
+                            value={dataForm.title}
+                            placeholder="Judul catatan"
+                            onChange={handleChange}
+                            required
+                            disabled={loading}
+                            // Menggunakan styling mirip input shadcn bawaan
+                            className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50"
+                        />
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <input
-                        type="text"
-                        name="title"
-                        value={dataForm.title}
-                        placeholder="Judul catatan"
-                        onChange={handleChange}
-                        required
-                        disabled={loading}
-                        className="w-full p-3 bg-gray-50 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
-                    />
+                        <textarea
+                            name="content"
+                            value={dataForm.content}
+                            placeholder="Isi catatan"
+                            onChange={handleChange}
+                            required
+                            rows="3"
+                            disabled={loading}
+                            // Menggunakan styling mirip textarea shadcn bawaan
+                            className="flex min-h-[80px] w-full rounded-md border border-slate-300 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                        />
 
-                    <textarea
-                        name="content"
-                        value={dataForm.content}
-                        placeholder="Isi catatan"
-                        onChange={handleChange}
-                        required
-                        rows="2"
-                        disabled={loading}
-                        className="w-full p-3 bg-gray-50 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 resize-none"
-                    />
+                        {/* BUTTON MENGGUNAKAN SHADCN UI */}
+                        <Button 
+                            type="submit" 
+                            disabled={loading}
+                            className="w-full sm:w-auto mt-2"
+                        >
+                            {loading ? "Mohon Tunggu..." : "Tambah Catatan"}
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
-                    >
-                        {loading ? "Mohon Tunggu..." : "Tambah Catatan"}
-                    </button>
-                </form>
-            </div>
-
-            {/* Notes Table */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-10">
-                <div className="px-6 py-4 border-b border-gray-100">
-                    <h3 className="text-lg font-semibold text-gray-800">
+            {/* TABLE CARD MENGGUNAKAN SHADCN UI */}
+            <Card className="border-slate-200 shadow-sm overflow-hidden">
+                <CardHeader className="bg-slate-50/50 border-b border-slate-100">
+                    <CardTitle className="text-lg">
                         Daftar Catatan ({notes.length})
-                    </h3>
-                </div>
-                
-                {loading && <LoadingSpinner text="Memuat catatan..." />}
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                    {loading && <LoadingSpinner text="Memuat catatan..." />}
 
-                {!loading && notes.length === 0 && !error && (
-                    <EmptyState text="Belum ada catatan. Tambah catatan pertama!" />
-                )}
+                    {!loading && notes.length === 0 && !error && (
+                        <EmptyState text="Belum ada catatan. Tambah catatan pertama!" />
+                    )}
 
-                {!loading && notes.length === 0 && error && (
-                    <EmptyState text="Terjadi Kesalahan. Coba lagi nanti." />
-                )}
-                
-                {!loading && notes.length > 0 ? (
-                    <GenericTable
-                        columns={["#", "Judul", "Isi Catatan", "Aksi"]}
-                        data={notes}
-                        renderRow={(note, index) => (
-                            <>
-                                <td className="px-6 py-4 font-medium text-gray-700 border-t border-gray-100">
-                                    {index + 1}.
-                                </td>
-                                <td className="px-6 py-4 border-t border-gray-100">
-                                    <div className="font-semibold text-emerald-600">
-                                        {note.title}
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 max-w-xs border-t border-gray-100">
-                                    <div className="truncate text-gray-600">
-                                        {note.content}
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 border-t border-gray-100">
-                                    <button
-                                        onClick={() => handleDelete(note.id)}
-                                        disabled={loading}
-                                        className="p-2 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
-                                    >
-                                        <AiFillDelete className="text-red-500 text-xl" />
-                                    </button>
-                                </td>
-                            </>
-                        )}
-                    />
-                ) : null}
-            </div>
+                    {!loading && notes.length === 0 && error && (
+                        <EmptyState text="Terjadi Kesalahan. Coba lagi nanti." />
+                    )}
+                    
+                    {!loading && notes.length > 0 ? (
+                        <GenericTable
+                            columns={["#", "Judul", "Isi Catatan", "Aksi"]}
+                            data={notes}
+                            renderRow={(note, index) => (
+                                <>
+                                    <td className="px-6 py-4 font-medium text-slate-700 border-t border-slate-100">
+                                        {index + 1}.
+                                    </td>
+                                    <td className="px-6 py-4 border-t border-slate-100">
+                                        <div className="font-semibold text-slate-900">
+                                            {note.title}
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 max-w-xs border-t border-slate-100">
+                                        <div className="truncate text-slate-600">
+                                            {note.content}
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 border-t border-slate-100">
+                                        {/* BUTTON DELETE MENGGUNAKAN SHADCN UI (Variant Destructive) */}
+                                        <Button
+                                            variant="destructive"
+                                            size="icon"
+                                            onClick={() => handleDelete(note.id)}
+                                            disabled={loading}
+                                            title="Hapus Catatan"
+                                        >
+                                            <AiFillDelete className="h-4 w-4" />
+                                        </Button>
+                                    </td>
+                                </>
+                            )}
+                        />
+                    ) : null}
+                </CardContent>
+            </Card>
         </div>
     );
 }
