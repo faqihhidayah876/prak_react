@@ -12,10 +12,11 @@ const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const Customers = React.lazy(() => import("./pages/Customers"));
 const Produk = React.lazy(() => import("./pages/Produk"));
 const Orders = React.lazy(() => import("./pages/Orders"));
-const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail")); 
 
 // 1. TAMBAHKAN LAZY LOAD UNTUK COMPONENTS PAGE DI SINI
-const ComponentsPage = React.lazy(() => import("./pages/Components")); 
+const ComponentsPage = React.lazy(() => import("./pages/Components"));
+const NotesPage = React.lazy(() => import("./pages/Notes")); 
 
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
@@ -37,6 +38,7 @@ function App() {
           <Route path="/products" element={<Produk />} />
           <Route path="/products/:id" element={<ProductDetail />} /> 
           <Route path="/components" element={<ComponentsPage />} />
+          <Route path="/notes" element={<NotesPage />} />
           <Route path="/FiturXyz" element={<FiturXyz/>} />
           
           <Route path="*" element={<NotFound errorCode="404" errorDescription="Sorry, we were unable to find that page" errorImage="/image_9dca28.jpg" />} />
