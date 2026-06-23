@@ -6,6 +6,7 @@ import "./assets/tailwind.css";
 import Loading from "./components/Loading";
 import NotFound from "./pages/ErrorPage";
 import FiturXyz from "./pages/fiturXyz";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Lazy loading untuk Pages dan Layouts
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -31,21 +32,26 @@ function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route element={<MainLayout/>}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/products" element={<Produk />} />
-          <Route path="/products/:id" element={<ProductDetail />} /> 
-          <Route path="/components" element={<ComponentsPage />} />
-          <Route path="/notes" element={<NotesPage />} />
-          <Route path="/FiturXyz" element={<FiturXyz/>} />
-          
-          <Route path="*" element={<NotFound errorCode="404" errorDescription="Sorry, we were unable to find that page" errorImage="/image_9dca28.jpg" />} />
-          <Route path="/error-400" element={<NotFound errorCode="400" errorDescription="Bad Request. Server cannot process the request." />} />
-          <Route path="/error-401" element={<NotFound errorCode="401" errorDescription="Unauthorized. You lack valid authentication credentials." />} />
-          <Route path="/error-403" element={<NotFound errorCode="403" errorDescription="Forbidden. You don't have permission to access this resource." />} />
+        {/* Protected routes with MainLayout */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<MainLayout/>}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/customers" element={<Customers />} />
+            <Route path="/products" element={<Produk />} />
+            <Route path="/products/:id" element={<ProductDetail />} /> 
+            <Route path="/components" element={<ComponentsPage />} />
+            <Route path="/notes" element={<NotesPage />} />
+            <Route path="/FiturXyz" element={<FiturXyz/>} />
+            
+            <Route path="*" element={<NotFound errorCode="404" errorDescription="Sorry, we were unable to find that page" errorImage="/image_9dca28.jpg" />} />
+            <Route path="/error-400" element={<NotFound errorCode="400" errorDescription="Bad Request. Server cannot process the request." />} />
+            <Route path="/error-401" element={<NotFound errorCode="401" errorDescription="Unauthorized. You lack valid authentication credentials." />} />
+            <Route path="/error-403" element={<NotFound errorCode="403" errorDescription="Forbidden. You don't have permission to access this resource." />} />
+          </Route>
         </Route>
+
+        {/* Public auth routes */}
         <Route element={<AuthLayout/>}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
